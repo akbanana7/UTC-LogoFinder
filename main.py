@@ -1,6 +1,7 @@
 import numpy as np
 import cv2 as cv
 import cameraFinder as cF
+import modelHandler as mH
 
 print(cF.findCamera())
 
@@ -13,6 +14,7 @@ if not cap.isOpened(): # Checks if you can actually open the camera
     print("Cannot open camera object")
     raise TypeError("Camera object cannot open")
 
+print("--Z to exit--")
 while True:
     ret, frame = cap.read()
 
@@ -22,8 +24,9 @@ while True:
 
     colorScale = cv.cvtColor(frame, cv.COLOR_BGR2GRAY) # Converts viewed video to whatever color format
 
-    cv.imshow("frame", frame) # Apparently doing ("frame", frame) makes it go into normal color instead of papa smurf
+    #mH.main(frame)
 
+    cv.imshow("frame", frame) # Apparently doing ("frame", frame) makes it go into normal color instead of papa smurf
     if cv.waitKey(1) == ord("z"): # Quits if "z" is pressed
         break
 
